@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
@@ -15,7 +15,11 @@ app.use(
   })
 );
 
-const startServer = () => {
+app.use((req: Request, res: Response) => {
+  res.send("Hello");
+});
+
+const startServer = (): void => {
   try {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
@@ -27,3 +31,5 @@ const startServer = () => {
 };
 
 startServer();
+
+export const viteNodeApp = app;
