@@ -1,10 +1,12 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import authRouter from "./routers/auth";
+import connectDB from "./configs/database";
 
 dotenv.config();
 
-const PORT: number = Number(process.env.PORT);
+const basePath: string = "/api/v1";
 
 const app = express();
 
@@ -15,21 +17,7 @@ app.use(
   })
 );
 
-app.use((req: Request, res: Response) => {
-  res.send("Hello");
-});
+app.use(`${basePath}`, authRouter);
 
-const startServer = (): void => {
-  try {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  } catch (err) {
-    console.error("Failed to start server:", err);
-    process.exit(1);
-  }
-};
-
-startServer();
-
+connectDB();
 export const viteNodeApp = app;
