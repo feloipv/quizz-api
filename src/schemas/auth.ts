@@ -18,7 +18,7 @@ export const signupSchema = Joi.object({
   confirmPassword: userSchema.extract("confirmPassword"),
 });
 
-export const loginSchema = Joi.object({
+export const signinSchema = Joi.object({
   email: userSchema.extract("email"),
   password: userSchema.extract("password"),
 });

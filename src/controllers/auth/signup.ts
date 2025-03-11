@@ -14,7 +14,7 @@ const signup = async (
   next: NextFunction
 ): Promise<void> => {
   const { name, email } = req.body as IUser;
-  const otp = generateOTP();
+  const otp = await generateOTP();
 
   let errResponse: ErrorResponse;
 
