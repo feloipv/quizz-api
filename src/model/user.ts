@@ -21,7 +21,7 @@ const userSchema: Schema<IUser> = new Schema(
     avatar: { type: String, default: "" },
     otp: { type: String, select: false },
     otpExpiresAt: { type: Date, select: false },
-    isActive: {
+    isActivate: {
       type: Boolean,
       default: false,
     },

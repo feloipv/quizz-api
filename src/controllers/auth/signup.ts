@@ -1,7 +1,7 @@
 import User from "../../model/user";
-import { IUser, AuthenticatedRequest } from "../../interfaces/user";
+import { IUser } from "../../interfaces/user";
 import { signupSchema } from "../../schemas/auth";
-import { Response, NextFunction } from "express";
+import { Response, NextFunction, Request } from "express";
 import { createError } from "../../utils/errorUtils";
 import { generateOTP } from "../../utils/generateOTP";
 import { ErrorResponse } from "../../middlewares/errorMiddlware";
@@ -9,7 +9,7 @@ import sendEmail from "../../configs/mailer";
 import ms from "ms";
 
 const signup = async (
-  req: AuthenticatedRequest,
+  req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {

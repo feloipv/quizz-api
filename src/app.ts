@@ -3,6 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRouter from "./routers/auth";
 import connectDB from "./configs/database";
+import errorHandler from "./middlewares/errorMiddlware";
 
 dotenv.config();
 
@@ -18,6 +19,8 @@ app.use(
 );
 
 app.use(`${basePath}`, authRouter);
+
+app.use(errorHandler);
 
 connectDB();
 export const viteNodeApp = app;
