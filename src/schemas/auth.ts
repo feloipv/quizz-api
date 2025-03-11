@@ -8,7 +8,7 @@ const userSchema = Joi.object({
   avatar: Joi.string().default(""),
   otp: Joi.string().length(6).optional(),
   otpExpiresAt: Joi.date().optional(),
-  isActive: Joi.boolean().default(false),
+  isActivate: Joi.boolean().default(false),
 });
 
 export const signupSchema = Joi.object({
@@ -21,6 +21,11 @@ export const signupSchema = Joi.object({
 export const loginSchema = Joi.object({
   email: userSchema.extract("email"),
   password: userSchema.extract("password"),
+});
+
+export const verifyOtpSchema = Joi.object({
+  email: userSchema.extract("email"),
+  otp: userSchema.extract("otp").required(),
 });
 
 export default userSchema;

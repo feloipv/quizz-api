@@ -16,7 +16,7 @@ const errorHandler = (
 
   const errors = err.errors || [];
 
-  return res.status(statusCode).json({
+  res.status(statusCode).json({
     message,
     errors: errors.length ? errors : undefined,
   });

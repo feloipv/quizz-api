@@ -8,7 +8,7 @@ export interface IUser extends Document {
   avatar?: string;
   otp?: string;
   otpExpiresAt?: Date;
-  isActive: boolean;
+  isActivate: boolean;
 }
 
 export interface AuthenticatedRequest extends Request {
