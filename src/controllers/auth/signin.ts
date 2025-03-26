@@ -37,14 +37,16 @@ const signin = async (
     }
 
     const access_token = generateToken(String(user._id), "15m");
-    const refresh_token = generateToken(String(user._id), "1d");
+    // const refresh_token = generateToken(String(user._id), "1d");
+
+    res.cookie("token", access_token, {
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
+    });
 
     res.status(200).json({
-      message: "Sigin success",
-      data: {
-        access_token,
-        refresh_token,
-      },
+      message: "LOgin thành công",
     });
   } catch (error) {
     next(error);
