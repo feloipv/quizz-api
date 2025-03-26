@@ -8,6 +8,7 @@ import errorHandler from "./middlewares/errorMiddlware";
 dotenv.config();
 
 const basePath: string = "/api/v1";
+const MONGODB_URI: string = process.env.MONGODB_URI as string;
 
 const app = express();
 
@@ -22,5 +23,5 @@ app.use(`${basePath}`, authRouter);
 
 app.use(errorHandler);
 
-connectDB();
-export const viteNodeApp = app;
+connectDB(MONGODB_URI);
+app.listen(8080, () => console.log("Server chạy trên cổng 8080"));
